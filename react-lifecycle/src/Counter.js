@@ -9,6 +9,10 @@ class Counter extends Component {
         console.log("Counter --> constructor()");
     }
 
+    // state = {
+    //     count: 0
+    // }
+
     counter = () => {
         this.setState(prevState => {
             return {
@@ -26,7 +30,7 @@ class Counter extends Component {
     componentDidUpdate(prevProps, prevState) {
         console.log(
             "Counter --> componentDidUpdate() prevState.count",
-            prevState.count
+            prevState.count, 'this is the current state: ', this.state.count
         );
         //if (this.props.userID !== prevProps.userID) {
         //  this.fetchData(this.props.userID);

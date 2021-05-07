@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import countries from './countries.json';
 import CountryList from './components/CountryList';
 import CountryDetail from './components/CountryDetail';
+import axios from 'axios';
 
 class App extends React.Component {
 
@@ -13,9 +13,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      countries: countries
-    })
+    axios.get('/api/countries')
+      .then(response => {
+        console.log(response);
+        this.setState({
+          countries: response.data
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
